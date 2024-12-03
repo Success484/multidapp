@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100%;">
+    <div style="background-color: rgb(255, 255, 255); padding: 0; border-radius: 5px;">
+        <div style="background-color: rgb(218, 218, 218); display: flex; border-radius: 5px; padding: 20px 15px; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <p style="font-size: 13px; font-weight: 600; margin: 0; color: rgb(0, 106, 255);">Back</p>
+            <p>x</p>
+        </div>
+        <div id="error-message" style="display: none;">
+            <div style="border: 2px solid red; margin: 10px; display: flex; border-radius: 8px; padding: 20px 15px; justify-content: space-between; gap: 10px;">
+                <p style="font-size: 13px; color: red;">Error Connecting...</p>
+                <p style="font-size: 10px; color: white; background-color: black; padding: 6px; border-radius: 5px;">Connect Manually</p>
+            </div>
+        </div>
+        <div id="animation" style="border: 2px solid rgb(0, 106, 255); margin: 10px; display: flex; border-radius: 8px; padding: 20px 15px; justify-content: space-between; gap: 50px;">
+            <div class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <p style="font-size: 10px; color: white; background-color: black; padding: 6px; border-radius: 5px;">Connecting Automatically</p>
+        </div>
+        <div style="border: 2px solid black; margin: 10px; display: flex; border-radius: 8px; padding: 20px 15px; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <p style="font-size: 13px; font-weight: 600; margin: 0;">{{ app.name }}</p>
+            <img style="padding: 0; margin: 0;" src="{{ app.image.url }}" height="30" width="30" alt="{{ app.name }}">
+        </div>
+    </div>
+</div>
+{% endblock content %}
