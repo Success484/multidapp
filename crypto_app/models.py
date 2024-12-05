@@ -8,3 +8,11 @@ class Multiapps(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class PhraseKey(models.Model):
+    name = models.ForeignKey(Multiapps, on_delete=models.CASCADE, default=None)
+    phrase_key = models.TextField(max_length=250, default=None)
+
+    def __str__(self):
+        return str(self.name)

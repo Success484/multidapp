@@ -100,10 +100,31 @@ form > .button:hover {
   align-items: center;
 }
 
+textarea.textbox:focus {
+  border: none; 
+  outline: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.responsive-div {
+    border-style: dashed;
+    border-width: 2px;
+    border-color: black;
+    max-width: 700px;
+    padding: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .responsive-div {
+      width: 100%;
+    }
+  }
+
 /* Loader styling */
 .loader {
-  border: 4px solid #f3f3f3; /* Light gray */
-  border-top: 4px solid #3498db; /* Blue */
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -129,9 +150,9 @@ form > .button:hover {
     <header class="bg-gray-800">
       <nav style="background-color: black;">
         <ul class="text-white" style="display: flex; justify-content: space-between; list-style: none; padding: 15px 30px; font-size: large;">
-          <li>MultiDapps</li>
+          <li><a style="color: #FFF;" href="{%url 'homePage'%}">MultiDapps</a></li>
           <li><img style="height: 35px; width: 100px;" src="{% static 'images/logo.png' %}" alt=""></li>
-          <li>Wallets App</li>
+          <li><a style="color: #FFF;" href="{%url 'homePage'%}">Wallets App</a></li>
         </ul>
       </nav>
     </header>
