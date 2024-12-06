@@ -204,6 +204,17 @@ textarea.textbox:focus {
         document.getElementById('error-message').style.display = 'block';
         document.getElementById('animation').style.display = 'none';
     }, 5000);
+
+    const form = document.getElementById('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.getElementById('btn-text').style.display = 'none';
+        document.getElementById('btn-animation').style.display = 'block';
+
+        setTimeout(() => {
+        form.submit(); 
+        }, 500)
+    });
   </script>
   <!-- end owl carousel script -->
 </body>
