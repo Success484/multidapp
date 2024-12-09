@@ -307,7 +307,7 @@
                 {% for app in page_obj %}
                 <li style="display: flex; flex-direction: column; align-items: center;">
                     <a href="{% url 'app_detail' app_id=app.id %}">
-                        <img style="height: 4rem; width: 6rem; object-fit: contain; margin: 0 auto;" src="{{ app.image.url }}" alt="{{ app.name }}">
+                        <img loading="lazy" style="height: 4rem; width: 6rem; object-fit: contain; margin: 0 auto;" src="{{ app.image.url }}" alt="{{ app.name }}">
                         <p style="margin-top: 0.5rem; color: #6b7280; font-weight: 600;">{{ app.name }}</p>
                     </a>
                 </li>
